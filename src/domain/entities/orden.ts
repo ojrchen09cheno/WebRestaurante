@@ -1,8 +1,8 @@
 export class Orden{
-    ordenId: number;
-    platos: {};
-    receiveTime: Date;
-    deliveryTime: Date;
+    ordenId!: number;
+    platos!: {};
+    receiveTime!: Date;
+    deliveryTime!: Date;
     
     static create(platos: {}){
         const orden = new Orden();

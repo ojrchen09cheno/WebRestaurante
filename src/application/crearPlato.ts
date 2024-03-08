@@ -1,5 +1,5 @@
 import { NuevoPlatoDTO } from "./data/nuevoPlatoDTO";
 
 export interface crearPlato {
-    crearOrden(nuevoPlato: NuevoPlatoDTO): Promise<number>;
+    crearPlato(nuevoPlato: NuevoPlatoDTO): Promise<number>;
 }
