@@ -18,7 +18,7 @@ export const PlatoOrdenSchema = {
         type: DataTypes.INTEGER,
         field:'platoId',
         references: {
-            models: 'plato',
+            model: 'plato',
             key: 'id'
         }
     },

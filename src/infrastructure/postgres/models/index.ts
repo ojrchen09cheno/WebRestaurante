@@ -1,7 +1,7 @@
-import { Plato, PlatoSchema } from './models/plato'
-import { Categoria, CategoriaSchema } from './models/categoria'
-import { PlatosOrdenes, PlatoOrdenSchema } from './models/platosOrdenes'
-import { Orden, OrdenSchema } from './models/orden'
+const { Plato, PlatoSchema } = require('./plato')
+const { Categoria, CategoriaSchema } = require('./categoria')
+const { PlatosOrdenes, PlatoOrdenSchema } = require('./platosOrdenes')
+const { Orden, OrdenSchema } = require('./orden')
 
 export function setupModels(sequelize: any) {
     Plato.init(PlatoSchema, Plato.config(sequelize));
@@ -9,3 +9,5 @@ export function setupModels(sequelize: any) {
     Orden.init(OrdenSchema, Orden.config(sequelize));
     PlatosOrdenes.init(PlatoOrdenSchema, PlatosOrdenes.config(sequelize));
 }
+
+module.exports = setupModels;
