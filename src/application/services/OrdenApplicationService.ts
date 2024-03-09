@@ -10,7 +10,7 @@ export class OrdenApplicationService implements crearOrden {
     ) { }
 
     async crearOrden(nuevaOrden: NuevaOrdenDTO) {
-        const entity = Orden.create(nuevaOrden.platos);
+        const entity = Orden.create(nuevaOrden.platos); 
         const saved = await this.orden.ordenar(entity)
         return saved.ordenId
     }

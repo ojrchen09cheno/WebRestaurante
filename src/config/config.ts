@@ -1,4 +1,7 @@
-require('dotenv').config();
+//require('dotenv').config();
+import * as dotenv from "dotenv"
+
+dotenv.config({path: '../../.env'});
 
 const config = {
     env: process.env.NODE_ENV || 'dev',
@@ -9,3 +12,5 @@ const config = {
     dbName: process.env.DB_NAME,
     dbPort: process.env.DB_PORT || 5432,
 }
+
+module.exports = { config };

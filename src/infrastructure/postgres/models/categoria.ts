@@ -1,30 +1,30 @@
 import { Model, DataTypes } from 'sequelize';
 
-const ORDEN_TABLE = 'orden';
+const CATEGORIA_TABLE = 'categoria';
 
-export class Orden extends Model {
+export class Categoria extends Model {
     static config(sequelize: any){
         return{
             sequelize,
-            tableName: ORDEN_TABLE,
-            modelName: 'orden',
+            tableName: CATEGORIA_TABLE,
+            modelName: 'categoria',
             timestamps: true
         }
     }
 }
 
-export const OrdenSchema = {
+export const CategoriaSchema = {
     id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: DataTypes.INTEGER
     },
-    precio: {
+    nombre: {
         allowNull: false,
-        type: DataTypes.INTEGER,
-        field:'precio',
+        type: DataTypes.STRING,
+        field:'nombre',
     }
 }
 
-module.exports = { Orden, OrdenSchema };
+module.exports = { Categoria, CategoriaSchema };
