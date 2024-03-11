@@ -9,8 +9,8 @@ export class CategoriaApplicationService implements crearCategoria {
         private categoria: CategoriaRepository,
     ) { }
 
-    async crearCategoria(nuevaCategoria: NuevaCategoriaDTO) {
-        const entity = Categoria.create(nuevaCategoria.nombre); 
+    async crearCategoria(nuevaCategoria: Categoria) {
+        const entity = Categoria.create(nuevaCategoria.categoriaName); 
         const saved = await this.categoria.guardar(entity)
         return saved.categoriaId
     }

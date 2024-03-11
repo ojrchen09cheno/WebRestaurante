@@ -1,5 +1,5 @@
-import { NuevaCategoriaDTO } from "./data/nuevaCategoriaDTO";
+import { Categoria } from "../domain/entities/categoria";
 
 export interface crearCategoria {
-    crearCategoria(nuevaCategoria: NuevaCategoriaDTO): Promise<number>;
+    crearCategoria(nuevaCategoria: Categoria): Promise<number>;
 }
