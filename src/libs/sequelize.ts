@@ -1,6 +1,6 @@
 const { Sequelize } = require('sequelize');
 //import { config } from '../config/config'
-const setupModels = require('../infrastructure/postgres/models');
+const setupModels = require('../infrastructure/postgres/models/setup');
 const { config } = require('../config/config');
 
 export const sequelize = new Sequelize(

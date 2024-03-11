@@ -1,16 +1,24 @@
+import { Sequelize } from "sequelize";
 import { Categoria } from "../../domain/entities/categoria";
 import { CategoriaRepository } from "../../domain/repository/categoriaRepository";
-const { models } = require('../../libs/sequelize')
-
+//import { sequelize } from '../dependencias'
+  
 export class CategoriaRepositoryAdapter implements CategoriaRepository{
+    
+    sequelize: any;
 
-    constructor() {}
+    constructor(model: Sequelize) {
+        this.sequelize = model
+    }
+    guardar(categoria: Categoria): Promise<Categoria> {
+        return this.sequelize.Categoria.guardar(categoria)
+    }
 
     async findById(id: number): Promise<Categoria> {
-        throw new Error("Method not implemented.");
+        return this.sequelize.Categoria.findById(id);
     }
     async findAll(): Promise<Categoria[]> {
-        throw new Error("Method not implemented.");
+        return await this.sequelize.Categoria.findAll();
     }
     
 }

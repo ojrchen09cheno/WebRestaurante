@@ -1,5 +1,5 @@
 export class Orden{
-    ordenId!: number;
+    id!: number;
     platos!: {};
     receiveTime!: Date;
     deliveryTime!: Date;
