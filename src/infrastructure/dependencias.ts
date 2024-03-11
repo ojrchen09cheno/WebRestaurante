@@ -6,10 +6,12 @@ import { CategoriaApplicationService } from '../application/services/CategoriaAp
 import { PlatoRepositoryAdapter } from '../infrastructure/adapters/PlatoRepositoryAdapter'
 import { CategoriaRepositoryAdapter } from './adapters/categoriaRepositoryAdapter'
 import { OrdenRepositoryAdapter } from './adapters/ordenRepositoryAdapter'
+import { VerCategoriasService } from '../application/services/verCategoriasService'
 
 const platoRepository = new PlatoRepositoryAdapter();
 const ordenRepository = new OrdenRepositoryAdapter();
-const categoriaRepository = new CategoriaRepositoryAdapter(sequelize);
+const categoriaRepository = new CategoriaRepositoryAdapter();
 export const platoServices = new PlatoApplicationService(platoRepository, categoriaRepository);
 export const ordenServices = new OrdenApplicationService(ordenRepository);
 export const categoriaServices = new CategoriaApplicationService(categoriaRepository);
+export const verCategoriasService = new VerCategoriasService(categoriaRepository);

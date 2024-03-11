@@ -2,7 +2,7 @@ import { Model, DataTypes } from 'sequelize';
 
 const CATEGORIA_TABLE = 'categoria';
 
-export class Categoria extends Model {
+export class CategoriaDB extends Model {
     static config(sequelize: any){
         return{
             sequelize,
@@ -27,4 +27,4 @@ export const CategoriaSchema = {
     }
 }
 
-module.exports = { Categoria, CategoriaSchema };
+module.exports = { CategoriaDB, CategoriaSchema };
