@@ -2,18 +2,24 @@ import express from "express"
 import cors from "cors"
 import "dotenv/config"
 import morgan from "morgan" 
+import swaggerUi from "swagger-ui-express"
+import swaggerSetup from "./docs/swagger"
 
 import { indexRouter } from "./infrastructure/http/routes/index"
 import { categoriaRouter } from "./infrastructure/http/routes/categoriaRoutes"
-//import router from "./infrastructure/http/ordenRoutes.ts"
+import { platoRouter } from "./infrastructure/http/routes/platoRoutes"
 
 const PORT = process.env.PORT || 3001;
 
+const sequelize = require('./libs/sequelize')
 const app = express();
 app.use(cors());
 app.use(morgan("tiny"));
 app.use(express.json());
+
 app.use('/inicio',  indexRouter);
 app.use('/categorias', categoriaRouter);
+app.use('/platos', platoRouter)
+app.use("/documentation", swaggerUi.serve, swaggerUi.setup(swaggerSetup))
 
 app.listen(PORT, () => console.log(`escuchando el puerto ${PORT}`));

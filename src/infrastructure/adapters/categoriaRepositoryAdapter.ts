@@ -9,16 +9,18 @@ export class CategoriaRepositoryAdapter implements CategoriaRepository{
 
     constructor() {}
 
-    async guardar(data: any): Promise<any> {
-        console.log(data)
-        return CategoriaDB.create(data)
+    async guardar(categoria: any): Promise<any> {
+        const newCat = CategoriaDB.create(categoria);
+        return (await newCat).toJSON;
     }
 
     async findById(id: number): Promise<any> {
-        return CategoriaDB.findByPk(id);
+        const categoria = CategoriaDB.findByPk(id)
+        return categoria;
     }
     async findAll(): Promise<any> {
-        return await CategoriaDB.findAll();
+        const categorias = await CategoriaDB.findAll()
+        return categorias;
     }
     
 }

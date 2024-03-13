@@ -2,7 +2,6 @@ import { Plato } from "../../domain/entities/plato";
 import { CategoriaRepository } from "../../domain/repository/categoriaRepository";
 import { PlatoRepository } from "../../domain/repository/platoRepository";
 import { crearPlato } from "../crearPlato"
-import { NuevoPlatoDTO } from "../data/nuevoPlatoDTO"
 import { PlatoApplicationError } from "../error/platoApplicationErrror";
 
 export class PlatoApplicationService implements crearPlato {
@@ -12,14 +11,28 @@ export class PlatoApplicationService implements crearPlato {
         private categoria: CategoriaRepository,
     ) { }
 
-    async crearPlato(nuevoPlato: NuevoPlatoDTO) {
-        const category = await this.categoria.findById(nuevoPlato.platoCategoria);
-        if (!category) {
-            throw new PlatoApplicationError(`Categoría no encontrada id=${nuevoPlato.platoCategoria}`)
+    async verPlatos(): Promise<any> {
+        const platos = await this.plato.findAll();
+        return platos;
+    }
+    async verPlato(id: any): Promise<any> {
+        const plato = await this.plato.findById(id)
+        if (plato == null) {
+            throw new Error(`Plato no encontrado id=${id}`);
         }
-        const entity = Plato.create(nuevoPlato.platoName, category)
-        const saved = await this.plato.guardar(entity)
-        return saved.platoId
+        return plato;
+    }
+
+    async crearPlato(plato: any) {
+        const categoria = await this.categoria.findById(plato.categoria);
+        if (!categoria) {
+            throw new PlatoApplicationError(`Categoría no encontrada id=${categoria}`);
+        }
+        if (plato.precio < 1) {
+            throw new PlatoApplicationError("El precio debe ser mayor a 0");
+        }
+        const saved = await this.plato.guardar(plato)
+        return saved.id
     }
 
 }

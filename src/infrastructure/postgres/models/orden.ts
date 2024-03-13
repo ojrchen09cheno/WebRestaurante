@@ -2,7 +2,7 @@ import { Model, DataTypes } from 'sequelize';
 
 const ORDEN_TABLE = 'orden';
 
-export class Orden extends Model {
+export class OrdenDB extends Model {
     static config(sequelize: any){
         return{
             sequelize,
@@ -27,4 +27,4 @@ export const OrdenSchema = {
     }
 }
 
-module.exports = { Orden, OrdenSchema };
+module.exports = { OrdenDB, OrdenSchema };

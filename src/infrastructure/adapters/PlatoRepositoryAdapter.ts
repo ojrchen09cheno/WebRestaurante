@@ -1,19 +1,19 @@
-const models = require('../../libs/sequelize');
 import { Plato } from '../../domain/entities/plato';
 import { PlatoRepository } from '../../domain/repository/platoRepository'
+import { PlatoDB } from '../postgres/models/plato'
 
 export class PlatoRepositoryAdapter implements PlatoRepository{
 
     constructor() {}
     
-    async findById(id: number): Promise<Plato> {
-        return await models.Plato.findByPk(id);
+    async findById(id: number): Promise<any> {
+        return await PlatoDB.findByPk(id);
     }
-    async findAll(): Promise<Plato[]> {
-        return await models.Plato.findAll();
+    async findAll(): Promise<any> {
+        return await PlatoDB.findAll();
     }
-    async guardar(plato: Plato): Promise<Plato> {
-        return await models.Plato.create(plato);
+    async guardar(plato: any): Promise<any> {
+        return await PlatoDB.create(plato);
     }
 
 }

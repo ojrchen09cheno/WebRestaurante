@@ -1,13 +1,13 @@
-const { Plato, PlatoSchema } = require('./plato')
+const { PlatoDB, PlatoSchema } = require('./plato')
 const { CategoriaDB, CategoriaSchema } = require('./categoria')
-const { PlatosOrdenes, PlatoOrdenSchema } = require('./platosOrdenes')
-const { Orden, OrdenSchema } = require('./orden')
+const { PlatosOrdenesDB, PlatoOrdenSchema } = require('./platosOrdenes')
+const { OrdenDB, OrdenSchema } = require('./orden')
 
 export function setupModels(sequelize: any) {
-    Plato.init(PlatoSchema, Plato.config(sequelize));
+    PlatoDB.init(PlatoSchema, PlatoDB.config(sequelize));
     CategoriaDB.init(CategoriaSchema, CategoriaDB.config(sequelize));
-    Orden.init(OrdenSchema, Orden.config(sequelize));
-    PlatosOrdenes.init(PlatoOrdenSchema, PlatosOrdenes.config(sequelize));
+    OrdenDB.init(OrdenSchema, OrdenDB.config(sequelize));
+    PlatosOrdenesDB.init(PlatoOrdenSchema, PlatosOrdenesDB.config(sequelize));
 }
 
 module.exports = setupModels;

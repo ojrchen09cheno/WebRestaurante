@@ -1,10 +1,10 @@
 export class Categoria{
-    categoriaId!: number;
-    categoriaName!: string;
+    id!: number;
+    nombre!: string;
     descripcion!: string;
     static create(nombre:string){
         const categoria = new Categoria();
-        categoria.categoriaName = nombre;
+        categoria.nombre = nombre;
         return categoria;
     }
 }

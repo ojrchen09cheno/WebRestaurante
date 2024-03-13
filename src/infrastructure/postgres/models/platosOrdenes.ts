@@ -2,7 +2,7 @@ import { Model, DataTypes } from 'sequelize';
 
 const PLATOS_ORDENES = 'platosOrdenes';
 
-export class PlatosOrdenes extends Model {
+export class PlatosOrdenesDB extends Model {
     static config(sequelize: any){
         return{
             sequelize,
@@ -32,4 +32,4 @@ export const PlatoOrdenSchema = {
     },
 }
 
-module.exports = { PlatosOrdenes, PlatoOrdenSchema };
+module.exports = { PlatosOrdenesDB, PlatoOrdenSchema };

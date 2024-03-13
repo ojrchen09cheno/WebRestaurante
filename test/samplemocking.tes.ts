@@ -1,4 +1,4 @@
-// Do not run
+/* 
 const user = require("./user");
 const database = require("./database");
 
@@ -13,15 +13,22 @@ describe("getUser", () => {
     expect(result).toBe(userObj);
   });
 });
+*/
+import { Categoria } from '../src/domain/entities/categoria';
+import { CategoriaRepository } from '../src/domain/repository/categoriaRepository';
+import { crearCategoria } from '../src/infrastructure/http/controllers/categoriaController'
 
-// Mock without database files
-function ProductrepositoryMock(product: Product): ProductRepository {
+// Mock 
+function CategoriaRepositoryMock(categoria: Categoria): CategoriaRepository {
   return {
-      save: jest.fn().mockReturnValue(Promise.resolve(product))
+      save: jest.fn().mockReturnValue(Promise.resolve(categoria))
   }
 }
 
-describe('ProductDomainService', () => {
+describe('categoriaController', () => {
+  describe('verCategorias', () => {
+    crearCategoria();
+  })
 
   let service: ProductService = null
 

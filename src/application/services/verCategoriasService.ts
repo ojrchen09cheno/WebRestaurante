@@ -3,15 +3,16 @@ import { verCategorias } from "../verCategorias";
 
 export class VerCategoriasService implements verCategorias {
 
-    categoria: CategoriaRepository;
+    //categoria: CategoriaRepository;
 
     constructor(
-        private categoriaConstr: CategoriaRepository) { 
-            this.categoria = categoriaConstr;
+        private categoria: CategoriaRepository) { 
+            //this.categoria = categoriaConstr;
          }
 
-    async verCategorias(): Promise<{}> {
+    async verCategorias(): Promise<any> {
         const data = await this.categoria.findAll();
+        console.log("vercat2")
         return data
     }
 

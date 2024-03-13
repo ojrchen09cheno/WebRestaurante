@@ -1,20 +1,20 @@
 import { Orden } from "../../domain/entities/orden";
 import { OrdenRepository } from "../../domain/repository/ordenRepository";
-
-const models = require('../../libs/sequelize');
+import { OrdenDB } from "../postgres/models/orden"
 
 export class OrdenRepositoryAdapter implements OrdenRepository{
 
     constructor() {}
 
-    findById(id: number): Promise<Orden> {
-        throw new Error("Method not implemented.");
+    findById(id: number): Promise<any> {
+        return OrdenDB.findByPk(id);
     }
-    findAll(): Promise<Orden[]> {
-        throw new Error("Method not implemented.");
+    findAll(): Promise<any> {
+        return OrdenDB.findAll();
     }
-    ordenar(orden: Orden): Promise<Orden> {
-        throw new Error("Method not implemented.");
+    ordenar(orden: any): Promise<any> {
+        console.log(orden)
+        return OrdenDB.create(orden);
     }
 
 }

@@ -1,18 +1,18 @@
 import { Categoria } from "./categoria";
 
 export class Plato{
-    platoId!: number;
-    platoName!: string;
-    platoCategoria!: Categoria;
+    id!: number;
+    nombre!: string;
+    categoria!: Categoria;
     descripcion!: string;
     picture!: string;
     precio!: number;
 
-    static create(name: string, categoria: Categoria){
+    static create(name: string, categoria: Categoria, precio: number){
         const plato = new Plato();
-        plato.platoName = name;
-        plato.platoCategoria = categoria;
-        plato.precio = 0;
+        plato.nombre = name;
+        plato.categoria = categoria;
+        plato.precio = precio;
         return plato;
     }
 }

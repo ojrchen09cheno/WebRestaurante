@@ -2,7 +2,7 @@ import { Model, DataTypes } from 'sequelize';
 
 const PLATO_TABLE = 'plato';
 
-export class Plato extends Model {
+export class PlatoDB extends Model {
     static config(sequelize: any){
         return{
             sequelize,
@@ -26,7 +26,7 @@ export class Plato extends Model {
         field:'nombre'
     },
     descripcion: {
-        allowNull: false,
+        allowNull: true,
         type: DataTypes.STRING,
         field:'descripcion',
     },
@@ -42,4 +42,4 @@ export class Plato extends Model {
     }
 }
 
-module.exports = { Plato, PlatoSchema };
+module.exports = { PlatoDB, PlatoSchema };
