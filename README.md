@@ -4,6 +4,7 @@ Proyecto personal de practica del stack PERN (Postgres, Express, React, NodeJS),
 - Documentacion con Swagger
 - Tests unitarios con Jest
 - Tests de API con Postman y Swagger
+
 Para ejecutar la app:
 - Clonar el repo con ```git clone https://github.com/ojrchen09cheno/WebRestaurante.git```
 - Instalar las dependencias dentro del proyecto con ```npm i``` o ```yarn``` 
