@@ -18,4 +18,5 @@ DB_NAME = nombrebd
 DB_PORT = puertobd
 ```
 - Ejecutar la app con npm start
+- Documentacion en ```http://localhost/3002/documentation```
 - Ejecutar los tests con npm test
