@@ -9,7 +9,7 @@ import { indexRouter } from "./infrastructure/http/routes/index"
 import { categoriaRouter } from "./infrastructure/http/routes/categoriaRoutes"
 import { platoRouter } from "./infrastructure/http/routes/platoRoutes"
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3002;
 
 const sequelize = require('./libs/sequelize')
 const app = express();

@@ -1,13 +1,12 @@
 import { Orden } from "../../domain/entities/orden";
 import { OrdenRepository } from "../../domain/repository/ordenRepository";
-import { crearOrden } from "../crearOrden"
+import { crearOrden } from "../serviceInterface/crearOrden"
 import { NuevaOrdenDTO } from "../data/nuevaOrdenDTO"
 
 export class OrdenApplicationService implements crearOrden {
 
     constructor(
-        private orden: OrdenRepository,
-    ) { }
+        private orden: OrdenRepository) {  }
 
     async crearOrden(nuevaOrden: NuevaOrdenDTO) {
         const entity = Orden.create(nuevaOrden.platos); 

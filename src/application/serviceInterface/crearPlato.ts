@@ -1,4 +1,4 @@
-import { NuevoPlatoDTO } from "./data/nuevoPlatoDTO";
+import { NuevoPlatoDTO } from "../data/nuevoPlatoDTO";
 
 export interface crearPlato {
     crearPlato(plato: any): Promise<number>;

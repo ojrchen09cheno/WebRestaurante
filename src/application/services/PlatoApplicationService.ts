@@ -1,7 +1,7 @@
 import { Plato } from "../../domain/entities/plato";
 import { CategoriaRepository } from "../../domain/repository/categoriaRepository";
 import { PlatoRepository } from "../../domain/repository/platoRepository";
-import { crearPlato } from "../crearPlato"
+import { crearPlato } from "../serviceInterface/crearPlato"
 import { PlatoApplicationError } from "../error/platoApplicationErrror";
 
 export class PlatoApplicationService implements crearPlato {

@@ -1,6 +1,6 @@
 import { Categoria } from "../../domain/entities/categoria";
 import { CategoriaRepository } from "../../domain/repository/categoriaRepository";
-import { crearCategoria } from "../crearCategoria";
+import { crearCategoria } from "../serviceInterface/crearCategoria";
 import { NuevaCategoriaDTO } from "../data/nuevaCategoriaDTO";
 
 export class CategoriaApplicationService implements crearCategoria {
@@ -10,7 +10,9 @@ export class CategoriaApplicationService implements crearCategoria {
     ) { }
 
     async crearCategoria(data: any) {
-        //const entity = Categoria.create(data); 
+        if(!data.nombre){
+            throw new Error("Nombre de categoria vacio")
+        }
         const saved = await this.categoria.guardar(data)
         return data
     }

@@ -15,7 +15,7 @@ export const verPlatos = async (req: Request, res: Response) => {
         const response = await platoServices.verPlatos();
         res.json({success: true, data: response});
     } catch (error) {
-        res.status(500).send({success: false + "500", message: error});
+        res.status(500).send({success: false, message: error});
     }
 }
 
