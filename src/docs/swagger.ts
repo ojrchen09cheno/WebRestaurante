@@ -12,8 +12,13 @@ const swaggerDefinition: OAS3Definition = {
         },
     ],
     components: {
-            /*securitySchemes: {
-            },*/
+        securitySchemes: {
+            bearerAuth: {
+                type: "http",
+                scheme: "bearer",
+                bearerFormat: "JWT"
+            }
+        },
         schemas:{
             plato: {
                 type: "object",
@@ -43,7 +48,21 @@ const swaggerDefinition: OAS3Definition = {
                 }
             },
             //orden: {},
-            //user: {},
+            user: {
+                type: "object",
+                required: ["nombre, usuario, contrasena"],
+                properties: {
+                    nombre: {
+                        type: "string"
+                    },
+                    usuario: {
+                        type: "string"
+                    },
+                    contrasena: {
+                        type: "string"
+                    }
+                }
+            },
         }
     }
 };

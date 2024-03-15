@@ -9,6 +9,7 @@ import { indexRouter } from "./infrastructure/http/routes/index"
 import { categoriaRouter } from "./infrastructure/http/routes/categoriaRoutes"
 import { platoRouter } from "./infrastructure/http/routes/platoRoutes"
 import { userRouter } from "./infrastructure/http/routes/userRoutes"
+import { verifyToken } from "./infrastructure/http/middleware/auth"
 
 const PORT = process.env.PORT || 3002;
 
@@ -19,7 +20,7 @@ app.use(morgan("tiny"));
 app.use(express.json());
 
 app.use('/inicio',  indexRouter);
-app.use('/categorias', categoriaRouter);
+app.use('/categorias', verifyToken, categoriaRouter);
 app.use('/platos', platoRouter)
 app.use('/user', userRouter)
 app.use("/documentation", swaggerUi.serve, swaggerUi.setup(swaggerSetup))

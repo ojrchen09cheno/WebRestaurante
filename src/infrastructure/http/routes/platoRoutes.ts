@@ -1,5 +1,6 @@
 import express from "express"
 import { crearPlato, verPlato, verPlatos } from '../controllers/platoController'
+import { verifyToken } from "../middleware/auth";
 
 const platoRouter = express.Router();
 platoRouter
@@ -51,7 +52,9 @@ platoRouter
  *                  application/json:
  *                      schema:
  *                          $ref: "#/components/schemas/plato"
+ *          security:
+ *              - bearerAuth: []
  */
-    .post("/", crearPlato);
+    .post("/", verifyToken, crearPlato);
 
 export { platoRouter };

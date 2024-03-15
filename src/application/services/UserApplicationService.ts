@@ -17,7 +17,6 @@ export class UserApplicationService implements UserService {
   }
   async login(user: any): Promise<any> {
     // crear jwt
-    // el if no sirve porque el return es una promesa
     if(!await this.userRepo.findByUser(user.usuario)){
       throw new Error("Usuario o contrasena incorrectos")
     }

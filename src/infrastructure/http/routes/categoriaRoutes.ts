@@ -24,6 +24,8 @@ categoriaRouter
   *             description: Retorna la categoria insertada.
   *         '500':
   *             description: Error de logica en la creacion.
+  *     security: 
+  *       - bearerAuth: []
  */
     .post("/", crearCategoria)
 
@@ -39,6 +41,8 @@ categoriaRouter
   *     responses:
   *         '200':
   *             description: Retorna todas las categorias
+  *     security: 
+  *       - bearerAuth: []
  */
     .get("/", verCategorias);
 
