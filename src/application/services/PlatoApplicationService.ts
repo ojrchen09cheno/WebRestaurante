@@ -31,6 +31,9 @@ export class PlatoApplicationService implements crearPlato {
         if (plato.precio < 1) {
             throw new PlatoApplicationError("El precio debe ser mayor a 0");
         }
+        if (!plato.nombre) {
+            throw new PlatoApplicationError("El plato no tiene nombre");
+        }
         const saved = await this.plato.guardar(plato)
         return saved.id
     }

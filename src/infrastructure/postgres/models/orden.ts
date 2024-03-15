@@ -24,7 +24,15 @@ export const OrdenSchema = {
         allowNull: false,
         type: DataTypes.INTEGER,
         field:'precio',
-    }
+    },
+    userId: {
+        type: DataTypes.INTEGER,
+        field:'userId',
+        references: {
+            model: 'user',
+            key: 'id'
+        },
+    },
 }
 
 module.exports = { OrdenDB, OrdenSchema };

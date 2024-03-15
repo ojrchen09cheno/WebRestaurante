@@ -14,7 +14,8 @@ export const verPlatos = async (req: Request, res: Response) => {
     try {
         const response = await platoServices.verPlatos();
         res.json({success: true, data: response});
-    } catch (error) {
+    } catch (error: unknown) {
+        // usar un if para specificar el tipo de error? -> if(e instanceof ErrorType)
         res.status(500).send({success: false, message: error});
     }
 }
@@ -24,7 +25,7 @@ export const verPlato = async(req: Request, res: Response) => {
         const id = parseInt(req.params.id);
         const response = await platoServices.verPlato(id);
         res.json({success: true, data: response});
-    } catch (error) {
+    } catch (error: unknown) {
         res.status(500).send({success: false, message: error})
     }
 }

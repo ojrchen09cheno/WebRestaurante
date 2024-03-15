@@ -1,17 +1,17 @@
 import { CategoriaApplicationService } from "../src/application/services/CategoriaApplicationService";
 
 const categoriaRepositoryMock = {
-    guardar: jest.fn(),
+  guardar: jest.fn(),
   findById: jest.fn(),
   findAll: jest.fn(),
 };
 
+const categoriaApplicationService = new CategoriaApplicationService(
+  categoriaRepositoryMock
+);
+
 it("deberia guardar una nueva categoria si es valida", async () => {
   // Arrange
-
-  const categoriaApplicationService = new CategoriaApplicationService(
-    categoriaRepositoryMock
-  );
 
   const agregarData = {
     nombre: "agregar",
@@ -27,10 +27,6 @@ it("deberia guardar una nueva categoria si es valida", async () => {
 
 it("deberia no guardar una categoria si es invalida", async () => {
   // Arrange
-
-  const categoriaApplicationService = new CategoriaApplicationService(
-    categoriaRepositoryMock
-  );
 
   const invalidData = {
     nombre: ""

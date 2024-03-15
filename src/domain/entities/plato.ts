@@ -1,14 +1,13 @@
-import { Categoria } from "./categoria";
 
 export class Plato{
     id!: number;
     nombre!: string;
-    categoria!: Categoria;
+    categoria!: number;
     descripcion!: string;
     picture!: string;
     precio!: number;
 
-    static create(name: string, categoria: Categoria, precio: number){
+    static create(name: string, categoria: number, precio: number){
         const plato = new Plato();
         plato.nombre = name;
         plato.categoria = categoria;
