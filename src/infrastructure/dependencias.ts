@@ -1,22 +1,17 @@
-//export const { sequelize } = require('./libs/sequelize')
-import { sequelize } from '../libs/sequelize'
-import { OrdenApplicationService } from '../application/services/OrdenApplicationService'
-import { PlatoApplicationService } from '../application/services/PlatoApplicationService'
-import { CategoriaApplicationService } from '../application/services/CategoriaApplicationService'
-import { PlatoRepositoryAdapter } from '../infrastructure/adapters/PlatoRepositoryAdapter'
-import { CategoriaRepositoryAdapter } from './adapters/categoriaRepositoryAdapter'
-import { OrdenRepositoryAdapter } from './adapters/ordenRepositoryAdapter'
-import { VerCategoriasService } from '../application/services/verCategoriasService'
-import { UserApplicationService } from '../application/services/UserApplicationService'
-import { UserRepositoryAdapter } from './adapters/userRepositoryAdapter'
+import * as CategoriaApp from '../application/serviceApplication/categoria/index'
+import * as PlatoApp from '../application/serviceApplication/plato/index'
+import * as UserApp from '../application/serviceApplication/user/index'
+import * as UserSQL from '../infrastructure/adapters/user/index'
+import * as CategoriaSQL from '../infrastructure/adapters/categoria/index'
+import * as PlatoSQL from '../infrastructure/adapters/plato/index'
 
-const platoRepository = new PlatoRepositoryAdapter();
-const ordenRepository = new OrdenRepositoryAdapter();
-const categoriaRepository = new CategoriaRepositoryAdapter();
-const userRepository = new UserRepositoryAdapter();
+export const crearCategoriaD = new CategoriaApp.CrearCategoriaApp(new CategoriaSQL.GuardarCategoriaSQL);
+export const verCategoriasD = new CategoriaApp.VerCategoriasApp(new CategoriaSQL.BuscarCategoriasSQL);
 
-export const platoServices = new PlatoApplicationService(platoRepository, categoriaRepository);
-export const ordenServices = new OrdenApplicationService(ordenRepository);
-export const categoriaServices = new CategoriaApplicationService(categoriaRepository);
-export const verCategoriasService = new VerCategoriasService(categoriaRepository);
-export const userServices = new UserApplicationService(userRepository);
+export const buscarPlatoIdD = new PlatoApp.VerPlatoIdApp(new PlatoSQL.BuscarPlatoIdSQL);
+export const buscarPlatosD = new PlatoApp.VerPlatosApp(new PlatoSQL.BuscarPlatosSQL);
+export const crearPlatoD = new PlatoApp.CrearPlatoApp(new PlatoSQL.CrearPlatoSQL, new CategoriaSQL.BuscarCategoriaIdSQL);
+
+export const buscarUsersD = new UserApp.BuscarUsersApp(new UserSQL.BuscarUsersSQL);
+export const loginD = new UserApp.LoginApp(new UserSQL.BuscarUserNameSQL);
+export const registerD = new UserApp.RegisterApp(new UserSQL.CrearUserSQL, new UserSQL.BuscarUserNameSQL);

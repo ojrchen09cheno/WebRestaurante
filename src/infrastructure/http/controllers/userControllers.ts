@@ -1,10 +1,10 @@
-import { userServices } from '../../dependencias'
+import { buscarUsersD, loginD, registerD } from '../../dependencias'
 import { CookieOptions, Request, Response } from 'express'
 
 export const registrarse = async (req: Request, res: Response) => {
   try{
-    const response = await userServices.registrarse(req.body);
-    res.json({success: true, data: response})
+    const response = await registerD.registrarse(req.body);
+    res.json(response)
   } catch (error) {
     res.status(500).send({success: false, message: error})
   }
@@ -12,7 +12,7 @@ export const registrarse = async (req: Request, res: Response) => {
 
 export const login = async (req: Request, res: Response) => {
   try{
-    const token = await userServices.login(req.body);
+    const token = await loginD.login(req.body);
     delete req.body.contrasena;
     // Duracion de la sesion poner en .env?
     let options: CookieOptions = {
@@ -22,7 +22,7 @@ export const login = async (req: Request, res: Response) => {
       sameSite: "none",
     };
     res.cookie("token", token, options!);
-    res.json({success: true, usuario: req.body.usuario})
+    res.json(response)
   } catch (error: any){
     res.status(500).send({success: false, message: error.message})
   }

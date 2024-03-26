@@ -9,7 +9,6 @@ export function verifyToken(req: Request, res: Response, next: any) {
   const token = header.split("=")[1];
   try{
     const decoded = jwt.verify(token, config.SECRET!);
-    console.log(decoded);
     next();
   } catch (error) {
     res.status(401).json({ error: "Invalid token" })

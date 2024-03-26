@@ -1,39 +1,32 @@
-import { CategoriaApplicationService } from "../src/application/services/CategoriaApplicationService";
+import { CrearCategoriaApp } from "../src/application/serviceApplication/categoria/crearCategoriaApp";
 
-const categoriaRepositoryMock = {
-  guardar: jest.fn(),
-  findById: jest.fn(),
-  findAll: jest.fn(),
-};
+describe("Test para crear categorias", () => {
+  it("Deberia crear una categoria si es valida", async () => {
+    const dataValida = {
+      nombre: "arroz chino"
+    }
+    const guardarCategoriaRepo = {
+      guardar: jest.fn().mockResolvedValue(dataValida)
+    };
+    const crearCategoriaApp = new CrearCategoriaApp(guardarCategoriaRepo);
 
-const categoriaApplicationService = new CategoriaApplicationService(
-  categoriaRepositoryMock
-);
+    const result = await crearCategoriaApp.crear(dataValida);
 
-it("deberia guardar una nueva categoria si es valida", async () => {
-  // Arrange
+    expect(result.success).toEqual(true);
+    expect(guardarCategoriaRepo.guardar).toHaveBeenCalledWith(dataValida);
+  })
 
-  const agregarData = {
-    nombre: "agregar",
-  };
+  it("Deberia de dar un error si la categoria no tiene nombre", async () => {
+    const dataInvalida = {
+      nombre: ""
+    }
+    const guardarCategoriaRepo = {
+      guardar: jest.fn().mockResolvedValue(dataInvalida)
+    };
+    const crearCategoriaApp = new CrearCategoriaApp(guardarCategoriaRepo);
 
-  // Act
-  const result = await categoriaApplicationService.crearCategoria(agregarData);
+    const result = await crearCategoriaApp.crear(dataInvalida);
 
-  // Assert
-  expect(result).toEqual(agregarData);
-  expect(categoriaRepositoryMock.guardar).toHaveBeenCalledWith(agregarData);
-});
-
-it("deberia no guardar una categoria si es invalida", async () => {
-  // Arrange
-
-  const invalidData = {
-    nombre: ""
-  };
-
-  // Assert
-  expect(async () => {
-    await categoriaApplicationService.crearCategoria(invalidData);
-  }).rejects.toThrow();
-});
+    expect(result.success).toEqual(false);
+  })
+})

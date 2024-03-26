@@ -20,7 +20,7 @@ app.use(morgan("tiny"));
 app.use(express.json());
 
 app.use('/inicio',  indexRouter);
-app.use('/categorias', verifyToken, categoriaRouter);
+app.use('/categorias', categoriaRouter);
 app.use('/platos', platoRouter)
 app.use('/user', userRouter)
 app.use("/documentation", swaggerUi.serve, swaggerUi.setup(swaggerSetup))

@@ -1,3 +1,4 @@
+-- old to be updated
 -- public.categoria definition
 
 CREATE TABLE public.categoria (
