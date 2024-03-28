@@ -31,10 +31,10 @@ export const UserSchema = {
         type: DataTypes.STRING,
         field:'nombre',
     },
-    user: {
+    usuario: {
       allowNull: false,
       type: DataTypes.STRING,
-      field:'user',
+      field:'usuario',
       unique: true,
     },
     contrasena: {

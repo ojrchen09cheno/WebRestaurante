@@ -11,20 +11,24 @@ export class LoginApp implements LoginService {
 
   async login(user: any): Promise<any> {
 
-    if(!await this.buscarUserNameRepo.findByUser(user.user)){
+    if(!await this.buscarUserNameRepo.findByUser(user.usuario)){
       delete user.contrasena;
       return new ResponseApi(200, false, "Usuario o contraseña incorrectos", user);
     }
 
-    const userDB = await this.buscarUserNameRepo.findByUser(user.user);
+    const userDB = await this.buscarUserNameRepo.findByUser(user.usuario);
     if(!bcrypt.compareSync(user.contrasena, userDB.contrasena)){
       delete user.contrasena;
       return new ResponseApi(200, false, "Usuario o contraseña incorrectos", user);
     }
 
-    let token = jwt.sign({
-      user: userDB.user,},
-      config.SECRET!, {
+    let token = jwt.sign(
+      {
+      user: userDB.usuario,
+      id: userDB.id
+      },
+      config.SECRET!, 
+      {
       expiresIn: config.TOKEN_EXPIRE
     });
 

@@ -1,7 +1,7 @@
 export class User{
   id!: number;
   nombre!: string;
-  user!: string;
+  usuario!: string;
   contrasena!: string;
   direccion!: string;
   role!: number;
@@ -9,14 +9,16 @@ export class User{
     id: number, 
     nombre:string, 
     user: string,
-    direccion: string
+    direccion: string,
+    role: number
     )
     {
       const newUser = new User();
       newUser.id = id;
       newUser.nombre = nombre;
       newUser.direccion = direccion;
-      newUser.user = user;
+      newUser.usuario = user;
+      newUser.role = role;
       return newUser;
     }
 }

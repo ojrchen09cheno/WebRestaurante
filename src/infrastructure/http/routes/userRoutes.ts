@@ -1,6 +1,6 @@
 import express from "express"
 import { login, registrarse, verUsuarios } from '../controllers/userControllers'
-import { verifyToken } from "../middleware/auth";
+import { verifyAdmin } from "../middleware/authAdmin";
 
 export const userRouter = express.Router();
 
@@ -50,4 +50,4 @@ userRouter
  *          description: Error en el registro
  */
   .post('/register', registrarse)
-  .get('/', verifyToken, verUsuarios);
+  .get('/', verifyAdmin, verUsuarios);

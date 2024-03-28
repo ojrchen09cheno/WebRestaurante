@@ -15,3 +15,4 @@ export const crearPlatoD = new PlatoApp.CrearPlatoApp(new PlatoSQL.CrearPlatoSQL
 export const buscarUsersD = new UserApp.BuscarUsersApp(new UserSQL.BuscarUsersSQL);
 export const loginD = new UserApp.LoginApp(new UserSQL.BuscarUserNameSQL);
 export const registerD = new UserApp.RegisterApp(new UserSQL.CrearUserSQL, new UserSQL.BuscarUserNameSQL);
+export const verificarAdminD = new UserApp.VerificarAdminApp(new UserSQL.BuscarUserIdSQL);

@@ -1,6 +1,6 @@
 import express from "express"
 import { crearCategoria, verCategorias } from '../controllers/categoriaController'
-import { verifyToken } from "../middleware/auth";
+import { verifyAdmin } from "../middleware/authAdmin";
 
 const categoriaRouter = express.Router();
 
@@ -33,7 +33,7 @@ categoriaRouter
  *      security: 
  *        - bearerAuth: []
  */ 
-    .post("/", verifyToken, crearCategoria)
+    .post("/", verifyAdmin, crearCategoria)
 
 /**
  *  Get track
@@ -55,6 +55,6 @@ categoriaRouter
  *      security: 
  *        - bearerAuth: []
  */ 
-    .get("/", verifyToken, verCategorias);
+    .get("/", verifyAdmin, verCategorias);
 
 export { categoriaRouter };

@@ -12,7 +12,7 @@ export const registrarse = async (req: Request, res: Response) => {
 
 export const login = async (req: Request, res: Response) => {
   try{
-    const token = await loginD.login(req.body);
+    const response = await loginD.login(req.body);
     delete req.body.contrasena;
     // Duracion de la sesion poner en .env?
     let options: CookieOptions = {
@@ -21,7 +21,7 @@ export const login = async (req: Request, res: Response) => {
       secure: true,
       sameSite: "none",
     };
-    res.cookie("token", token, options!);
+    res.cookie("token", response.data.token, options);
     res.json(response)
   } catch (error: any){
     res.status(500).send({success: false, message: error.message})

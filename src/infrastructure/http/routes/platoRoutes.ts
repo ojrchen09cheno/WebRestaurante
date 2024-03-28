@@ -1,6 +1,6 @@
 import express from "express"
 import { crearPlato, verPlato, verPlatos } from '../controllers/platoController'
-import { verifyToken } from "../middleware/auth";
+import { verifyAdmin } from "../middleware/authAdmin";
 
 const platoRouter = express.Router();
 platoRouter
@@ -60,6 +60,6 @@ platoRouter
  *      security:
  *        - bearerAuth: []
  */
-    .post("/", verifyToken, crearPlato);
+    .post("/", verifyAdmin, crearPlato);
 
 export { platoRouter };

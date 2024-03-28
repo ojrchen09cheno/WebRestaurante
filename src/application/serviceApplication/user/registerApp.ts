@@ -10,14 +10,23 @@ export class RegisterApp implements RegisterService {
   
   async registrarse(user: any): Promise<ResponseApi> {
     // More secure if use email aswell and send error to email
-    if(await this.buscarUserNameRepo.findByUser(user.user)){
+    // When doing front, how to decide wether an user role assignment
+    if(await this.buscarUserNameRepo.findByUser(user.usuario)){
       delete user.contrasena;
       return new ResponseApi(200, false, "El usuario ya existe", user);
+    }
+    if(!user.usuario){
+      delete user.contrasena;
+      return new ResponseApi(200, false, "Usuario invalido", user);
+    }
+    if(!user.contrasena){
+      delete user.contrasena;
+      return new ResponseApi(200, false, "Contrasena invalida", user);
     }
     const encriptar = bcrypt.hashSync(user.contrasena, 10);
     user.contrasena = encriptar;
     const result = await this.crearUserRepo.crear(user);
-    return new ResponseApi(201, true, "Registro exitoso", user);
+    return new ResponseApi(201, true, "Registro exitoso", result);
   }
   
 }
